@@ -58,8 +58,8 @@ Open the tool and navigate to the downloaded `.jar` directory.
 ![](../__assets/__htb/cypher/jd.png)
 
 The `CustomFunctions` class `getUrlStatusCode(url)` function executes O.S command, so it can be vulnerable to **Command Injection**
-Also, the application is using `Neo4j` database for its authentication in `/api/auth` route. So, I can also be vulnerable to **Injection Attack** through which **Command Injection** can be achieved.
-I never heard about graph database existence and the name _Neo4j_ so after going through the **docs** it got little knowledge but not enough to try injections.
+Also, the application is using `Neo4j` database for its authentication in `/api/auth` route. So, it can also be vulnerable to **Injection Attack** through which **Command Injection** can be achieved.
+I never heard about graph database existence and the name _Neo4j_ so after going through the **docs** I got little knowledge but not enough to try injections.
 
 ## Neo4j Injection + Command Injection
 
@@ -83,9 +83,9 @@ Downloaded the `linpeas.sh` script from my machine for **information gathering**
 ![](../__assets/__htb/cypher/privesc.png)
 ![](../__assets/__htb/cypher/privesc1.png)
 
-Did not got much useful information. So, locking back, I found my mistake. As, I could not read `user.txt`, I moved from that directory and did not checked other files, if they are readable.
+Did not got much useful information. So, looked back, I found my mistake. As, I could not read `user.txt`, I moved from that directory and did not checked other files, if they are readable.
 
-There are readable files in that user, and got a credential. Tried to `ssh` into that user using the crdential and it **worked**.
+There are other readable files in that user, and got a credential. Tried to `ssh` into that user using the crdential and it **worked**.
 
 ![](../__assets/__htb/cypher/privesc2.png)
 
@@ -98,7 +98,7 @@ The user can execute `bbot`executable as root without password.
 ![](../__assets/__htb/cypher/privesc3.png)
 
 Tried various ways to find flaws in the script, used linpeas.sh to find for more information, nothing worked.
-Again, looked back, I overlooked and did not try executing the executable.
+Again, looked back, I found that I overlooked and did not try executing the executable.
 
 There is `-t` flag that is used to specify target, which can be a file as well.
 
